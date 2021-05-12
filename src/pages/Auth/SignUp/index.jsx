@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { auth } from "../../../util/firebaseConfig";
 import { useSelector } from "react-redux";
-import "./signUp.css";
 
 const SignUp = ({ history }) => {
   const [email, setEmail] = useState("");

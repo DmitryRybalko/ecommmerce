@@ -16,6 +16,7 @@ const TeamMember = ({ photo, name, position, text }) => {
             className="sm__link"
             href="https://www.facebook.com/"
             target="_blank"
+            rel="noreferrer"
           >
             <FaFacebookSquare className="sm__link__icon" />
           </a>
@@ -23,6 +24,7 @@ const TeamMember = ({ photo, name, position, text }) => {
             className="sm__link"
             href="https://twitter.com/home"
             target="_blank"
+            rel="noreferrer"
           >
             <FaTwitter className="sm__link__icon" />
           </a>
@@ -30,6 +32,7 @@ const TeamMember = ({ photo, name, position, text }) => {
             className="sm__link"
             href="https://www.linkedin.com/"
             target="_blank"
+            rel="noreferrer"
           >
             <FaLinkedin className="sm__link__icon" />
           </a>

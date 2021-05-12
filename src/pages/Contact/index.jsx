@@ -1,11 +1,39 @@
 import Hero from "../../components/Hero";
 import Perk from "../../components/Perk";
+import { useState } from "react";
 import heroImg from "../../assets/contact/hero-image.jpg";
 import { RiTimeFill, RiPhoneFill, RiMapPin2Fill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
+import { database } from "../../util/firebaseConfig";
+import { toast } from "react-toastify";
 import "./contact.css";
 
 const ContactUs = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    database
+      .collection("contacts")
+      .add({
+        name,
+        email,
+        message,
+      })
+      .then(() => {
+        toast.success("Message has been submitted");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+  console.log(process.env.REACT_APP_GOOGLE_MAPS);
+
   return (
     <div className="contact-wrapper">
       <Hero
@@ -37,6 +65,70 @@ const ContactUs = () => {
           icon={<RiPhoneFill className="perk__icon" />}
         />
       </div>
+      <section className="contact-section">
+        <div className="contact-section__map-container">
+          <iframe
+            className="map"
+            title="map"
+            width="600"
+            height="550"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-fiqg0w7qF0RliFHSx3V-bw&key=${process.env.REACT_APP_GOOGLE_MAPS}`}
+          ></iframe>
+        </div>
+        <div className="contact-section__form-container">
+          <h1 className="form__header">Contact Us</h1>
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="form__input-container">
+              <input
+                id="name"
+                type="text"
+                required
+                name="name"
+                className="form-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <span className="form-span"></span>
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+            </div>
+            <div className="form__input-container">
+              <input
+                id="email"
+                type="email"
+                required
+                name="email"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <span className="form-span"></span>
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+            </div>
+            <div className="form__input-container">
+              <textarea
+                id="message"
+                type="text"
+                required
+                name="message"
+                className="form-input"
+                value={message}
+                placeholder="Message"
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </div>
+            <button className="form__btn" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

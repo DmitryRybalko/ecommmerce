@@ -99,6 +99,15 @@
   background-color: #d93025;
 }
 
+.form__btn:hover {
+  background-color: #504e4a;
+}
+
+.form__btn-google:hover {
+  border: 1px solid #d93025;
+  background-color: #ec493d;
+}
+
 @media screen and (max-width: 320px) {
   .signIn-wrapper {
     display: flex;
