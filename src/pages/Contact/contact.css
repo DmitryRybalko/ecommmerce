@@ -1,0 +1,17 @@
+.perks-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 739px) {
+  .perks-wrapper {
+    margin-bottom: 0px;
+  }
+}
+
+@import url("../../components/Hero/hero.css");
+@import url("../../components/Perk/perk.css");

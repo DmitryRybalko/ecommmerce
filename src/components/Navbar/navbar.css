@@ -1,0 +1,139 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 75px;
+}
+
+.nav__logo-wrapper {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__list-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  width: 350px;
+}
+
+.nav__items-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.list-menu__item-link {
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(41, 41, 41, 0.4);
+  transition: color 0.25s ease-out;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: bolder;
+  margin-left: 5px;
+  color: #1a1515;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.login {
+  color: #292929;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 110px;
+}
+
+.logo-circle {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background-color: #292929;
+}
+
+.nav__items-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 40px;
+  width: 180px;
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.menu-line {
+  height: 2px;
+  margin: 2px 0;
+  background-color: #000;
+}
+
+.menu-line1 {
+  width: 20px;
+}
+.menu-line2 {
+  width: 15px;
+}
+.menu-line3 {
+  width: 16px;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav__list-menu {
+    display: none;
+  }
+  .login-container {
+    display: none;
+  }
+  .nav__items-wrapper {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .nav__logo-wrapper {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .nav__items-wrapper {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .nav__items-wrapper {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .nav__items-wrapper {
+    margin-right: 30px;
+  }
+}

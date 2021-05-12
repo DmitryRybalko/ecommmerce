@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signIn-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.form__header {
+  text-align: center;
+  padding: 0 0 20px 0;
+  padding-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.form__input-container {
+  overflow-y: hidden;
+  position: relative;
+  border-bottom: 1px solid #adadad;
+  margin: 30px 0;
+}
+
+.form-span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: #00f1c8;
+  transition: width 0.3s;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0 5px;
+  height: 41px;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:valid ~ .form-label {
+  top: -7px;
+  color: #00f1c8;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:valid ~ .form-label {
+  top: -7px;
+  color: #00f1c8;
+}
+
+.form-input:focus ~ .form-span::before,
+.form-input:valid ~ .form-span::before {
+  width: 100%;
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.form__btn {
+  margin-bottom: 15px;
+  height: 50px;
+  border: 1px solid #222;
+  background-color: #222;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 25px;
+  outline: none;
+}
+
+.form__btn-google {
+  border: 1px solid #d93025;
+  background-color: #d93025;
+}
+
+@media screen and (max-width: 320px) {
+  .signIn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
   }
-  to {
-    transform: rotate(360deg);
+  .form__header {
+    text-align: center;
+    padding: 0px 0 20px 0px;
   }
 }
+
+@import url("./pages/Auth/SignIn/signIn.css");
+@import url("./pages/About/about.css");

@@ -1,0 +1,223 @@
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.perks-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  min-height: 500px;
+  max-width: 1400px;
+  margin-bottom: 50px;
+}
+
+.about-section-container,
+.about-section-image-container {
+  flex-basis: 700px;
+}
+
+.about-section-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-section-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  max-width: 600px;
+}
+
+.text {
+  font-size: 1rem;
+  color: #504e4a;
+  font-family: sans-serif, Arial, Helvetica;
+  padding-bottom: 20px;
+  line-height: 25px;
+}
+
+.about-section__link {
+  text-decoration: none;
+  text-align: center;
+  min-width: 170px;
+  min-height: 60px;
+  background-color: #000;
+  padding: 20px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: sans-serif, Arial, Helvetica;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.about-section__link:hover {
+  background-color: #504e4a;
+}
+
+.image-container__image {
+  min-width: 100%;
+  max-height: 100%;
+}
+
+.about-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
+  background-color: #f3f3f3;
+  padding-top: 80px;
+}
+
+.about-team__team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header {
+  font-size: 2.6rem;
+  letter-spacing: 2px;
+  padding-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.about-team__header {
+  padding-bottom: 0px;
+}
+
+.about-team__text {
+  padding-bottom: 40px;
+}
+
+@media screen and (max-width: 1479px) {
+  .about-section {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 500px;
+    max-width: 1400px;
+  }
+  .about-section-image-container {
+    order: 0;
+    min-width: 700px;
+    min-height: 500px;
+  }
+  .about-section-container {
+    width: 800px;
+    align-items: center;
+    order: 1;
+    padding: 46px;
+  }
+  .about-section__text {
+    text-align: center;
+  }
+  .about-section-container,
+  .about-section-image-container {
+    flex-basis: min(10%, 400px);
+  }
+}
+
+@media screen and (max-width: 739px) {
+  .hero-text__header {
+    font-size: 3rem;
+  }
+  .about-section {
+    min-height: 500px;
+    max-width: 400px;
+  }
+
+  .about-section-image-container {
+    justify-content: flex-start;
+    max-width: 400px;
+    max-height: 320px;
+  }
+  .about-section-container {
+    max-width: 400px;
+    max-height: 420px;
+    align-self: flex-start;
+    padding: 5px;
+  }
+  .about-section__text {
+    text-align: center;
+  }
+  .about-section-container,
+  .about-section-image-container {
+    flex-basis: 800px;
+  }
+  .image-container__image {
+    max-width: 400px;
+    min-width: 100px;
+    height: auto;
+  }
+  .about-section__header {
+    font-size: 1.8rem;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+  .perks-wrapper {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .about-section {
+    max-width: 300px;
+  }
+  .hero-text__text {
+    font-size: 0.9rem;
+  }
+  .hero-text__header {
+    font-size: 2.5rem;
+  }
+  .about-section-image-container {
+    max-width: 300px;
+  }
+  .about-section-container {
+    max-width: 300px;
+    min-height: 560px;
+    padding: 15px;
+  }
+  .about-section-container,
+  .about-section-image-container {
+    flex-basis: 800px;
+  }
+  .image-container__image {
+    max-width: 300px;
+  }
+  .header {
+    font-size: 1.6rem;
+  }
+
+  .about-team__text {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .image-container__image {
+    width: 260px;
+    margin-left: 20px;
+  }
+}
+
+@import url("../../components/Perk/perk.css");
+@import url("../../components/Hero/hero.css");
+@import url("../../components/TeamMember/teamMember.css");
