@@ -16,8 +16,8 @@
   align-items: center;
   align-self: center;
   flex-wrap: wrap;
-  margin-bottom: 50px;
-  min-height: 500px;
+  margin-bottom: 100px;
+  min-height: 600px;
   width: 1400px;
 }
 
@@ -30,7 +30,7 @@
 .contact-section__form-container {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  min-height: 500px;
   width: 50%;
   padding: 15px;
 }

@@ -2,6 +2,7 @@ import Hero from "../../components/Hero";
 import Perk from "../../components/Perk";
 import { useState } from "react";
 import heroImg from "../../assets/contact/hero-image.jpg";
+import Footer from "../../components/Footer";
 import { RiTimeFill, RiPhoneFill, RiMapPin2Fill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { database } from "../../util/firebaseConfig";
@@ -32,7 +33,6 @@ const ContactUs = () => {
     setEmail("");
     setMessage("");
   };
-  console.log(process.env.REACT_APP_GOOGLE_MAPS);
 
   return (
     <div className="contact-wrapper">
@@ -129,6 +129,7 @@ const ContactUs = () => {
           </form>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

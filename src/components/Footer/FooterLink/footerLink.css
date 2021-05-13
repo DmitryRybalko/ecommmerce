@@ -1,0 +1,16 @@
+.footer-col__link {
+  color: rgb(231, 226, 226);
+  font-size: 0.9rem;
+  font-family: sans-serif, Arial, Helvetica;
+  padding-bottom: 10px;
+}
+
+.footer-col__link:hover {
+  color: #ffcd05;
+}
+
+@media screen and (max-width: 756px) {
+  .footer-col__link {
+    font-size: 0.8rem;
+  }
+}

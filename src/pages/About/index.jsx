@@ -1,6 +1,7 @@
 import Hero from "../../components/Hero";
 import Perk from "../../components/Perk";
 import TeamMember from "../../components/TeamMember";
+import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { MdHighQuality } from "react-icons/md";
 import { RiMedalFill, RiEarthFill } from "react-icons/ri";
@@ -107,6 +108,7 @@ const AboutUs = () => {
           />
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
