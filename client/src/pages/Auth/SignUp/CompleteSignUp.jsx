@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { auth } from "../../../util/firebaseConfig";
+import { createOrUpdateU } from "../../../util/auth";
 
 const CompleteSignUp = ({ history }) => {
+  let dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user } = useSelector((state) => ({ ...state }));
@@ -37,8 +39,23 @@ const CompleteSignUp = ({ history }) => {
         window.localStorage.removeItem("userEmail");
         let user = auth.currentUser;
         await user.updatePassword(password);
-        //const idTokenResult = await user.getIdTokenResult();
-
+        const idTokenResult = await user.getIdTokenResult();
+        createOrUpdateU(idTokenResult.token)
+          .then((res) => {
+            dispatch({
+              type: "LOGGED_IN_USER",
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         history.push("/");
       }
     } catch (error) {
