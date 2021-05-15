@@ -60,9 +60,18 @@ const Navbar = () => {
           )}
           {user && (
             <>
-              <Link to="/" className="login">
-                User
-              </Link>
+              {user && user.role === "subscriber" && (
+                <Link to="/user/history" className="login">
+                  User
+                </Link>
+              )}
+
+              {user && user.role === "admin" && (
+                <Link to="/admin/dashboard" className="login">
+                  Admin
+                </Link>
+              )}
+
               <Link onClick={logOut} to="/signup" className="login">
                 Log Out
               </Link>

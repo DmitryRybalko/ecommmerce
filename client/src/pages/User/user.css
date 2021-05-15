@@ -1,0 +1,19 @@
+.history-wrapper {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.history__form-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+
+@media screen and (max-width: 415px) {
+  .history__form-wrapper {
+    width: 270px;
+  }
+}

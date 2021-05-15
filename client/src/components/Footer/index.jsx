@@ -2,7 +2,7 @@ import FooterLink from "./FooterLink";
 import FooterCol from "./FooterCol";
 import { FaTwitter, FaFacebookSquare, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { RiPhoneFill, RiMapPin2Fill } from "react-icons/ri";
+import { RiPhoneFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./footer.css";
 

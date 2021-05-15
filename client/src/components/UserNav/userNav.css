@@ -1,0 +1,35 @@
+.usernav {
+  display: flex;
+}
+
+.usernav__list {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  top: 90px;
+  left: 40px;
+  height: 150px;
+  width: 100px;
+}
+
+.usernav__list__item__link {
+  color: #000;
+  font-family: sans-serif, Arial, Helvetica;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.usernav__list__item__link:hover {
+  color: #ffcd05;
+}
+
+@media screen and (max-width: 1024px) {
+  .usernav__list {
+    flex-direction: row;
+    height: 100px;
+    min-width: 300px;
+    left: 12px;
+  }
+}

@@ -9,9 +9,14 @@ import Shop from "./pages/Shop";
 import ContactUs from "./pages/Contact";
 import AboutUs from "./pages/About";
 import History from "./pages/User/History";
+import Password from "./pages/User/Password";
+import Wishlist from "./pages/User/Wishlist";
+import CategoryCreate from "./pages/Admin/category/CategoryCreate";
 import UserRoute from "./components/Routes/UserRoute";
+import AdminRoute from "./components/Routes/AdminRoute";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import SignIn from "./pages/Auth/SignIn";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CompleteSignUp from "./pages/Auth/SignUp/CompleteSignUp";
 import { auth } from "./util/firebaseConfig";
 import { currentUser } from "./util/auth";
@@ -44,7 +49,7 @@ function App() {
       }
     });
     return () => unsubscribe();
-  });
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -59,6 +64,10 @@ function App() {
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/contact" component={ContactUs} />
         <UserRoute exact path="/user/history" component={History} />
+        <UserRoute exact path="/user/password" component={Password} />
+        <UserRoute exact path="/user/wishlist" component={Wishlist} />
+        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
+        <AdminRoute exact path="/admin/category" component={CategoryCreate} />
         <Route exact path="/about" component={AboutUs} />
       </Switch>
     </div>
