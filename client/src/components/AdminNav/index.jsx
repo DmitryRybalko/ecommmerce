@@ -26,11 +26,6 @@ const AdminNav = () => {
           </Link>
         </li>
         <li className="adminnav__list__item">
-          <Link className="adminnav__list__item__link" to="/admin/sub">
-            Sub Category
-          </Link>
-        </li>
-        <li className="adminnav__list__item">
           <Link className="adminnav__list__item__link" to="/user/password">
             Password
           </Link>

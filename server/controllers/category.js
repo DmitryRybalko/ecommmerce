@@ -1,4 +1,4 @@
-const category = require("../models/category");
+const Category = require("../models/category");
 const slugify = require("slugify");
 
 exports.create = async (req, res) => {
@@ -34,7 +34,7 @@ exports.update = async (req, res) => {
 exports.remove = async (req, res) => {
   try {
     const deleted = await Category.findOneAndDelete({ slug: req.params.slug });
-    res.jon(deleted);
+    res.json(deleted);
   } catch (error) {
     res.status(400).send("Delete category failed");
   }
