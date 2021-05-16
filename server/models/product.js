@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema;
 const productSchema = new mongoose.Schema(
   {
     title: {
-      type: tring,
+      type: String,
       trim: true,
       required: true,
       maxlength: 42,
@@ -23,28 +23,24 @@ const productSchema = new mongoose.Schema(
       maxlength: 3000,
       text: true,
     },
-    description: {
-      type: Number,
-      required: true,
-      trim: true,
-      maxlength: 30,
-    },
-    category: {
-      type: ObjectId,
-      ref: "Category",
-    },
+    // category: {
+    //   type: ObjectId,
+    //   ref: "Category",
+    // },
     quantity: Number,
     sold: {
       type: Number,
       default: 0,
     },
-    images: {
-      type: Array,
+    price: {
+      type: Number,
+      required: true,
+      trim: true,
+      maxlength: 20,
     },
-    shipping: {
-      type: String,
-      enum: ["Yes", "No"],
-    },
+    // images: {
+    //   type: Array,
+    // },
     // ratings: [
     //   {
     //     star: Number,
