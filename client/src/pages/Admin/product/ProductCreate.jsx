@@ -4,12 +4,15 @@ import "../../User/user.css";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { createProduct } from "../../../util/product";
+import { getCategories } from "../../../util/category";
+import FileUpload from "../../../components/FileUpload";
 
 const initState = {
   title: "Lorem elit",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   price: "400",
+  categories: [],
   category: "",
   shipping: "",
   quantity: "50",
@@ -19,8 +22,17 @@ const initState = {
 const ProductCreate = () => {
   const [values, setValues] = useState(initState);
   const { user } = useSelector((state) => ({ ...state }));
+  const [loading, setLoading] = useState(false);
 
-  const { title, description, price, category, quantity, images } = values;
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = () =>
+    getCategories().then((c) => setValues({ ...values, categories: c.data }));
+
+  const { title, description, price, category, categories, quantity, images } =
+    values;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +59,11 @@ const ProductCreate = () => {
         <div className="history__form-wrapper">
           <h1 className="form__header">Create product</h1>
           <form className="form" onSubmit={handleSubmit}>
+            <FileUpload
+              values={values}
+              setValues={setValues}
+              setLoading={setLoading}
+            />
             <div className="form__input-container">
               <input
                 id="title"
@@ -107,11 +124,31 @@ const ProductCreate = () => {
                 Quantity
               </label>
             </div>
-
+            <div className="form__input-container">
+              <select
+                id="category"
+                name="category"
+                className="form-input"
+                onChange={handleChange}
+              >
+                <option>Please Select</option>
+                {categories.length > 0 &&
+                  categories.map((c) => (
+                    <option key={c._id} value={c._id}>
+                      {c.name}
+                    </option>
+                  ))}
+              </select>
+              <span className="form-span"></span>
+              <label htmlFor="category" className="form-label">
+                Category
+              </label>
+            </div>
             <button className="form__btn" type="submit">
               Save
             </button>
           </form>
+          {JSON.stringify(values.images)}
         </div>
       </div>
     </div>

@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema(
       maxlength: 3000,
       text: true,
     },
-    // category: {
-    //   type: ObjectId,
-    //   ref: "Category",
-    // },
+    category: {
+      type: ObjectId,
+      ref: "Category",
+    },
     quantity: Number,
     sold: {
       type: Number,
