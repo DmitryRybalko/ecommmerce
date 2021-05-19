@@ -1,5 +1,4 @@
 import AdminNav from "../../components/AdminNav";
-import "../User/user.css";
 
 const AdminDashboard = () => {
   return (
@@ -8,7 +7,7 @@ const AdminDashboard = () => {
         <AdminNav />
       </div>
       <div className="history__content">
-        <h2 className="history__header">Admin dashboard</h2>
+        <h2 className="history__header">Admin Dashboard</h2>
       </div>
     </div>
   );

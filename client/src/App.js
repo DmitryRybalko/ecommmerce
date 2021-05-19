@@ -14,6 +14,7 @@ import Wishlist from "./pages/User/Wishlist";
 import CategoryCreate from "./pages/Admin/category/CategoryCreate";
 import CategoryUpdate from "./pages/Admin/category/CategoryUpdate";
 import ProductCreate from "./pages/Admin/product/ProductCreate";
+import ProductEdit from "./pages/Admin/product/ProductEdit";
 import UserRoute from "./components/Routes/UserRoute";
 import AdminRoute from "./components/Routes/AdminRoute";
 import ResetPassword from "./pages/Auth/ResetPassword";
@@ -22,6 +23,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CompleteSignUp from "./pages/Auth/SignUp/CompleteSignUp";
 import { auth } from "./util/firebaseConfig";
 import { currentUser } from "./util/auth";
+import AllProducts from "./pages/Admin/product/AllProducts";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -70,7 +72,9 @@ function App() {
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
+        <AdminRoute exact path="/admin/product/:slug" component={ProductEdit} />
         <AdminRoute exact path="/admin/category" component={CategoryCreate} />
+        <AdminRoute exact path="/admin/products" component={AllProducts} />
         <AdminRoute
           exact
           path="/admin/category/:slug"

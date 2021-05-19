@@ -47,20 +47,32 @@ const FileUpload = ({ values, setValues, setLoading }) => {
     }
   };
   return (
-    <div className="form__input-container">
-      <input
-        id="file"
-        type="file"
-        multiple
-        accept="images/*"
-        className="form-input"
-        onChange={fileUploadResize}
-      />
-      <span className="form-span"></span>
-      <label htmlFor="file" className="form-label">
-        Choose File
-      </label>
-    </div>
+    <>
+      <div className="form__input-container">
+        <input
+          id="file"
+          type="file"
+          multiple
+          accept="images/*"
+          className="form-input"
+          onChange={fileUploadResize}
+        />
+        <span className="form-span"></span>
+        <label htmlFor="file" className="form-label">
+          Choose File
+        </label>
+      </div>
+      {/* <div className="product-images-container">
+        {values.images &&
+          values.images.map((image) => (
+            <img
+              className="product-image"
+              key={image.public_id}
+              src={image.url}
+            ></img>
+          ))}
+      </div> */}
+    </>
   );
 };
 

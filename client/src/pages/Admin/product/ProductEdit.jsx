@@ -3,47 +3,58 @@ import { useState, useEffect } from "react";
 import "../../User/user.css";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { createProduct } from "../../../util/product";
+import { getProduct, updateProduct } from "../../../util/product";
 import { getCategories } from "../../../util/category";
 import FileUpload from "../../../components/FileUpload";
 import "../admin.css";
 
 const initState = {
-  title: "Lorem elit",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  price: "400",
-  categories: [],
+  title: "",
+  description: "",
+  price: "",
   category: "",
-  quantity: "50",
+  quantity: "",
   images: [],
 };
 
-const ProductCreate = () => {
-  const [values, setValues] = useState(initState);
+const ProductEdit = ({ match, history }) => {
   const { user } = useSelector((state) => ({ ...state }));
+  const [values, setValues] = useState(initState);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { slug } = match.params;
+
+  const { title, description, price, category, quantity, images } = values;
 
   useEffect(() => {
+    loadProduct();
     loadCategories();
   }, []);
 
-  const loadCategories = () =>
-    getCategories().then((c) => setValues({ ...values, categories: c.data }));
+  const loadProduct = () => {
+    getProduct(slug)
+      .then((p) => {
+        setValues({ ...values, ...p.data });
+      })
+      .catch((error) => console.log(error));
+  };
 
-  const { title, description, price, category, categories, quantity, images } =
-    values;
+  const loadCategories = () =>
+    getCategories().then((c) => setCategories(c.data));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createProduct(values, user.token)
+    setLoading(true);
+    updateProduct(slug, values, user.token)
       .then((res) => {
-        window.alert(`"${res.data.title}" is created`);
-        window.location.reload();
+        setLoading(false);
+        toast.success(`${res.data.title} is updated`);
+        history.push("/admin/products");
       })
       .catch((error) => {
         console.log(error);
-        if (error.response.status === 404) toast.error(error.response.data);
+        setLoading(false);
+        toast.error(error.response.data);
       });
   };
 
@@ -63,10 +74,9 @@ const ProductCreate = () => {
               Loading...
             </h1>
           ) : (
-            <h1 className="form__header form__header-create-product">
-              Create product
-            </h1>
+            <h1 className="form__header">Update product</h1>
           )}
+
           <form className="form" onSubmit={handleSubmit}>
             <FileUpload
               values={values}
@@ -139,8 +149,8 @@ const ProductCreate = () => {
                 name="category"
                 className="form-input"
                 onChange={handleChange}
+                value={category._id}
               >
-                <option>Please Select</option>
                 {categories.length > 0 &&
                   categories.map((c) => (
                     <option key={c._id} value={c._id}>
@@ -163,4 +173,4 @@ const ProductCreate = () => {
   );
 };
 
-export default ProductCreate;
+export default ProductEdit;

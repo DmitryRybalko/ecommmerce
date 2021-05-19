@@ -1,0 +1,18 @@
+.product-image {
+  width: 100px;
+  height: 100px;
+}
+
+.product-images-container {
+  background-color: aqua;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  width: 360px;
+  min-height: 360px;
+}
+
+.form__header-create-product {
+  margin-top: 15rem;
+}
