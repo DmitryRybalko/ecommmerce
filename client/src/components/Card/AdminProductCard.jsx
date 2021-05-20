@@ -18,15 +18,14 @@ const AdminProductCard = ({ product, handleRemove }) => {
         description && description.substring(0, 70)
       }...`}</p>
       <div className="product-card__btn-container">
-        {/* <button className="product-cart__btn edit">{<MdEdit />}</button> */}
-        <Link to={`/admin/product/${slug}`}>
-          <MdEdit />
+        <Link className="product-cart__btn" to={`/admin/product/${slug}`}>
+          <MdEdit className="product-cart__btn__icon" />
         </Link>
         <button
           onClick={() => handleRemove(slug)}
           className="product-cart__btn delete"
         >
-          {<MdDelete />}
+          {<MdDelete className="product-cart__btn__icon" />}
         </button>
       </div>
     </div>

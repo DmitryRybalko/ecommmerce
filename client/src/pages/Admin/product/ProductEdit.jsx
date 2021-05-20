@@ -70,11 +70,13 @@ const ProductEdit = ({ match, history }) => {
       <div className="history__content">
         <div className="history__form-wrapper">
           {loading ? (
-            <h1 className="form__header form__header-create-product">
+            <h1 className="form__header form__header-update-product">
               Loading...
             </h1>
           ) : (
-            <h1 className="form__header">Update product</h1>
+            <h1 className="form__header form__header-update-product">
+              Update product
+            </h1>
           )}
 
           <form className="form" onSubmit={handleSubmit}>
