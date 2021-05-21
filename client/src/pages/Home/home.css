@@ -1,0 +1,89 @@
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f3f3f3;
+}
+
+.types-wrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.types-wrapper__header {
+  font-size: 2.4rem;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  font-family: "Bebas Neue", sans-serif, Arial;
+}
+
+.types-wrapper__text {
+  font-size: 1rem;
+  font-family: sans-serif, Arial;
+  margin-bottom: 5rem;
+}
+
+.showcase__item {
+  position: relative;
+  margin: 11px;
+  width: 255px;
+}
+
+.description__header {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.description__text {
+  color: rgb(207, 205, 205);
+  font-size: 1.1rem;
+  line-height: 26px;
+}
+
+.showcase__item__description {
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  height: 45%;
+}
+
+.showcase__item__image-container {
+  width: 255px;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.showcase__items-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.products__popular {
+  margin-bottom: 10rem;
+}

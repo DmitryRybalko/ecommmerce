@@ -57,7 +57,7 @@ const ProductCreate = () => {
         <AdminNav />
       </div>
       <div className="history__content">
-        <div className="history__form-wrapper">
+        <div className="history__form-wrapper product-form">
           {loading ? (
             <h1 className="form__header form__header-create-product">
               Loading...

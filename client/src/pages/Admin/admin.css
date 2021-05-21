@@ -4,7 +4,6 @@
 }
 
 .product-images-container {
-  background-color: aqua;
   align-items: center;
   justify-content: space-around;
   display: flex;
@@ -18,7 +17,7 @@
 }
 
 .form__header-update-product {
-  margin-top: 20rem;
+  margin-top: 0rem;
 }
 
 .product-card-container {
@@ -27,4 +26,16 @@
   margin: auto;
   text-align: center;
   font-family: arial;
+}
+
+.product-form {
+  top: 510px;
+  min-height: 980px;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .product-form {
+    top: 600px;
+  }
 }
