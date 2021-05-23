@@ -15,11 +15,6 @@ const UserNav = () => {
             Password
           </Link>
         </li>
-        <li className="usernav__list__item">
-          <Link className="usernav__list__item__link" to="/user/wishlist">
-            Wishlist
-          </Link>
-        </li>
       </ul>
     </nav>
   );

@@ -73,3 +73,18 @@ exports.list = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.listRelated = async (req, res) => {
+  const product = await Product.findById(req.params.productId).exec();
+
+  const related = await Product.find({
+    _id: { $ne: product.id },
+    category: product.category,
+  })
+    .limit(4)
+    .populate("category")
+    .populate("postedBy")
+    .exec();
+
+  res.json(related);
+};

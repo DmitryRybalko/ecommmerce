@@ -10,6 +10,7 @@ const {
   remove,
   read,
   update,
+  listRelated,
   list,
 } = require("../controllers/product");
 
@@ -19,5 +20,6 @@ router.delete("/product/:slug", authCheck, adminCheck, remove);
 router.get("/product/:slug", read);
 router.put("/product/:slug", authCheck, adminCheck, update);
 router.post("/products", list);
+router.get("/product/related/:productId", listRelated);
 
 module.exports = router;

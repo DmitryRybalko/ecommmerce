@@ -19,6 +19,7 @@ import UserRoute from "./components/Routes/UserRoute";
 import AdminRoute from "./components/Routes/AdminRoute";
 import ResetPassword from "./pages/Auth/ResetPassword";
 import SignIn from "./pages/Auth/SignIn";
+import Product from "./pages/Product";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CompleteSignUp from "./pages/Auth/SignUp/CompleteSignUp";
 import { auth } from "./util/firebaseConfig";
@@ -67,6 +68,7 @@ function App() {
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/contact" component={ContactUs} />
+        <Route exact path="/product/:slug" component={Product} />
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />

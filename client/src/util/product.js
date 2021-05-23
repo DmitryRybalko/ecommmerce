@@ -33,3 +33,6 @@ export const getProducts = async (sort, order, limit) =>
     order,
     limit,
   });
+
+export const getRelatedProduct = async (productId) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/related/${productId}`);
