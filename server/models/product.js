@@ -41,15 +41,6 @@ const productSchema = new mongoose.Schema(
     images: {
       type: Array,
     },
-    // ratings: [
-    //   {
-    //     star: Number,
-    //     postedBy: {
-    //       type: ObjectId,
-    //       ref: "User",
-    //     },
-    //   },
-    // ],
   },
   { timestamps: true }
 );

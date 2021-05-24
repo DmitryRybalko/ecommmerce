@@ -53,24 +53,9 @@ exports.update = async (req, res) => {
     res.json(updated);
   } catch (error) {
     console.log(error);
-    //return res.status(400).send("Product update failed");
     res.status(400).json({
       error: error.message,
     });
-  }
-};
-
-exports.list = async (req, res) => {
-  try {
-    const { sort, order, limit } = req.body;
-    const products = await Product.find({})
-      .populate("category")
-      .sort([[sort, order]])
-      .limit(limit)
-      .exec();
-    res.json(products);
-  } catch (error) {
-    console.log(error);
   }
 };
 
@@ -87,4 +72,41 @@ exports.listRelated = async (req, res) => {
     .exec();
 
   res.json(related);
+};
+
+exports.listNoPagination = async (req, res) => {
+  try {
+    const { sort, order, limit } = req.body;
+    const products = await Product.find({})
+      .populate("category")
+      .sort([[sort, order]])
+      .limit(limit)
+      .exec();
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.list = async (req, res) => {
+  console.table(req.body);
+  try {
+    const { sort, order, page } = req.body;
+    const currentPage = page || 1;
+    const perPage = 6;
+    const products = await Product.find({})
+      .skip((currentPage - 1) * perPage)
+      .populate("category")
+      .sort([[sort, order]])
+      .limit(perPage)
+      .exec();
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.productsCount = async (req, res) => {
+  let total = await Product.find({}).estimatedDocumentCount().exec();
+  res.json(total);
 };
