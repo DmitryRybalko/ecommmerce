@@ -23,6 +23,7 @@
 .nav__items-wrapper {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .list-menu__item-link {
@@ -101,6 +102,33 @@
 
 .cart-icon {
   cursor: pointer;
+}
+
+.cart-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.cart-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 40px;
+  position: relative;
+}
+
+.cart-circle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  top: 7px;
+  right: 7px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 1024px) {

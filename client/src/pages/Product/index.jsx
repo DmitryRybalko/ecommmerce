@@ -3,6 +3,8 @@ import { getProduct, getRelatedProduct } from "../../util/product";
 import defaultProduct from "../../assets/default.jpg";
 import ProductCard from "../../components/Card/ProductCard";
 import Footer from "../../components/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import _ from "lodash";
 import "./product.css";
 
 const Product = ({ match }) => {
@@ -24,6 +26,31 @@ const Product = ({ match }) => {
     loadSingleProduct();
   }, [slug]);
 
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch();
+  //const [cartNotEmpty, setCartNotEmpty] = useState(0);
+
+  const handleAddToCart = () => {
+    let cart = [];
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      let unique = _.uniqWith(cart, _.isEqual);
+      localStorage.setItem("cart", JSON.stringify(unique));
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: unique,
+      });
+    }
+
+    //setCartNotEmpty(cartNotEmpty + 1);
+  };
+
   return (
     <>
       <div className="product">
@@ -40,7 +67,9 @@ const Product = ({ match }) => {
             <p className="product__price">{price}$</p>
             <p className="product__description">{description}</p>
             <div className="product__info__actions">
-              <button className="actions-btn">Add to Card</button>
+              <button onClick={handleAddToCart} className="actions-btn">
+                Add to Card
+              </button>
             </div>
             <p className="product__category">
               Category: {category && category.name}

@@ -8,7 +8,7 @@ import cartIcon from "../../assets/cart.svg";
 const Navbar = () => {
   const dispatch = useDispatch();
   let history = useHistory();
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, cart } = useSelector((state) => ({ ...state }));
   const logOut = () => {
     firebase.auth().signOut();
     dispatch({
@@ -78,7 +78,12 @@ const Navbar = () => {
             </>
           )}
         </div>
-        <img className="cart-icon" src={cartIcon} alt="cart" />
+        <div className="cart-icon-wrapper">
+          <Link to="/cart" className="cart-link">
+            <img className="cart-icon" src={cartIcon} alt="cart" />
+            {cart && cart.length > 0 ? <div className="cart-circle"></div> : ""}
+          </Link>
+        </div>
         <div className="menu-wrapper">
           <div className="menu-line menu-line1"></div>
           <div className="menu-line menu-line2"></div>

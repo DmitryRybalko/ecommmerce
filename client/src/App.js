@@ -10,7 +10,7 @@ import ContactUs from "./pages/Contact";
 import AboutUs from "./pages/About";
 import History from "./pages/User/History";
 import Password from "./pages/User/Password";
-import Wishlist from "./pages/User/Wishlist";
+import Cart from "./pages/Cart";
 import CategoryCreate from "./pages/Admin/category/CategoryCreate";
 import CategoryUpdate from "./pages/Admin/category/CategoryUpdate";
 import ProductCreate from "./pages/Admin/product/ProductCreate";
@@ -67,11 +67,11 @@ function App() {
         <Route exact path="/signup/complete" component={CompleteSignUp} />
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/cart" component={Cart} />
         <Route exact path="/contact" component={ContactUs} />
         <Route exact path="/product/:slug" component={Product} />
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
-        <UserRoute exact path="/user/wishlist" component={Wishlist} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
         <AdminRoute exact path="/admin/product/:slug" component={ProductEdit} />
