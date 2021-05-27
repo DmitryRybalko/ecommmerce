@@ -1,4 +1,4 @@
-import React from "react";
+import "./hero.css";
 
 const Hero = ({ header, text, image }) => {
   return (

@@ -7,7 +7,7 @@ const CategoryForm = ({ name, handleSubmit, setName, loading }) => {
         <input
           id="name"
           required
-          type="name"
+          type="text"
           name="name"
           className="form-input"
           value={name}

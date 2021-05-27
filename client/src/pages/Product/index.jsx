@@ -64,7 +64,7 @@ const Product = ({ match }) => {
           </div>
           <div className="product__info">
             <h2 className="product__header">{title}</h2>
-            <p className="product__price">{price}$</p>
+            <p className="product__price">${price}</p>
             <p className="product__description">{description}</p>
             <div className="product__info__actions">
               <button onClick={handleAddToCart} className="actions-btn">

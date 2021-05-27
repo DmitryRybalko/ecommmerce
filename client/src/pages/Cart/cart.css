@@ -1,0 +1,120 @@
+.cart-wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__products-wrapper {
+  display: flex;
+  justify-content: center;
+  min-width: 500px;
+  margin-bottom: 35px;
+}
+
+.cart__total-wrapper {
+  margin-left: 1rem;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #ecedf2;
+  width: 450px;
+  height: 250px;
+  border: 1px solid #222;
+  margin-bottom: 35px;
+}
+
+.total__container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 150px;
+}
+
+.total__text {
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+.total__header {
+  font-family: "Bebas Neue", sans-serif, Arial, Helvetica;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
+.total__btn {
+  width: 180px;
+  height: 45px;
+  font-size: 0.9rem;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+.total__link {
+  color: white;
+  text-decoration: none;
+}
+
+.total__btn:hover {
+  background-color: #3d3c3a;
+}
+
+.table__body {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1rem;
+  min-width: 400px;
+}
+
+.table__heading {
+  background-color: #d8d8d8;
+  padding: 12px 15px;
+}
+
+.table__data {
+  padding: 12px 15px;
+  border-bottom: 1px solid #000;
+}
+
+.table__row {
+  background-color: #ecedf2;
+  text-align: left;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 570px) {
+  .cart__products-wrapper {
+    width: 100vw;
+    background-color: darkgreen;
+  }
+  .cart__total-wrapper {
+    margin-left: 0;
+  }
+  .products__table {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 505px) {
+  .products__table {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart__total-wrapper {
+    width: 260px;
+    height: 210px;
+  }
+}

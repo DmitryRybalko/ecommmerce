@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
         description && description.substring(0, 50)
       }...`}</p>
       <div className="product-card__price-container">
-        <p className="product-card__price">{price}$</p>
+        <p className="product-card__price">${price}</p>
       </div>
       <div className="product-card__button-container">
         <Link className="product-cart__button" to={`/product/${slug}`}>

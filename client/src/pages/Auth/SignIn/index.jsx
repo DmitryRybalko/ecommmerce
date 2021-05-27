@@ -9,17 +9,23 @@ const SignIn = ({ history }) => {
   let dispatch = useDispatch();
   const { user } = useSelector((state) => ({ ...state }));
 
-  useEffect(() => {
-    if (user && user.token) history.push("/");
-  }, [user, history]);
-
   const roleBasedRedirect = (res) => {
-    if (res.data.role === "admin") {
-      history.push("/admin/dashboard");
+    let intended = history.location.state;
+    console.log(intended);
+    if (intended) {
+      history.push(intended.from);
     } else {
-      history.push("/user/history");
+      if (res.data.role === "admin") {
+        history.push("/admin/dashboard");
+      } else {
+        history.push("/user/history");
+      }
     }
   };
+
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
