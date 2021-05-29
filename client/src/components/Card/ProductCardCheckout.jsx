@@ -1,9 +1,29 @@
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { MdDelete } from "react-icons/md";
 
 const ProductCardCheckout = ({ p }) => {
   const dispatch = useDispatch();
   const { title, count, price, images, _id, quantity } = p;
+
+  const handleRemove = () => {
+    let cart = [];
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      cart.map((product, i) => {
+        if (product._id === _id) {
+          cart.splice(i, 1);
+        }
+      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: cart,
+      });
+    }
+  };
 
   const handleQuantityChange = (e) => {
     let count = e.target.value < 1 ? 1 : e.target.value;
@@ -17,7 +37,7 @@ const ProductCardCheckout = ({ p }) => {
         cart = JSON.parse(localStorage.getItem("cart"));
       }
       cart.map((product, i) => {
-        if (product._id == _id) {
+        if (product._id === _id) {
           cart[i].count = count;
         }
       });
@@ -58,7 +78,11 @@ const ProductCardCheckout = ({ p }) => {
             onChange={handleQuantityChange}
           />
         </td>
-        <td className="table__data">Remove</td>
+        <td className="table__data">
+          <div className="delete-icon-container">
+            <MdDelete onClick={handleRemove} className="delete_icon" />
+          </div>
+        </td>
       </tr>
     </tbody>
   );
