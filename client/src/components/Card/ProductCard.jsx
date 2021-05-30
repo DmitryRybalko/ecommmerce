@@ -5,6 +5,7 @@ import defaultProduct from "../../assets/default.jpg";
 import "./product.css";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const { user, cart } = useSelector((state) => ({ ...state }));
@@ -22,6 +23,7 @@ const ProductCard = ({ product }) => {
         ...product,
         count: 1,
       });
+      toast.success("Added to cart");
       let unique = _.uniqWith(cart, _.isEqual);
       localStorage.setItem("cart", JSON.stringify(unique));
       dispatch({
@@ -54,7 +56,11 @@ const ProductCard = ({ product }) => {
           <MdRemoveRedEye className="product-cart__button__icon" />
           <p className="btn__text">View Product</p>
         </Link>
-        <button onClick={handleAddToCart} className="product-cart__button">
+        <button
+          disabled={product.quantity < 1}
+          onClick={handleAddToCart}
+          className="product-cart__button"
+        >
           <MdShoppingCart className="product-cart__button__icon" />
           <p className="btn__text">Add to Cart</p>
         </button>

@@ -19,6 +19,7 @@ import ProductEdit from "./pages/Admin/product/ProductEdit";
 import UserRoute from "./components/Routes/UserRoute";
 import AdminRoute from "./components/Routes/AdminRoute";
 import ResetPassword from "./pages/Auth/ResetPassword";
+import Payment from "./pages/Payment";
 import SignIn from "./pages/Auth/SignIn";
 import Product from "./pages/Product";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
@@ -72,6 +73,7 @@ function App() {
         <Route exact path="/contact" component={ContactUs} />
         <Route exact path="/product/:slug" component={Product} />
         <UserRoute exact path="/user/history" component={History} />
+        <UserRoute exact path="/user/payment" component={Payment} />
         <UserRoute exact path="/checkout" component={Checkout} />
         <UserRoute exact path="/user/password" component={Password} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />

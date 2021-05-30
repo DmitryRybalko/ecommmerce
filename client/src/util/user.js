@@ -20,6 +20,13 @@ export const getUserCart = async (authtoken) => {
   });
 };
 
+export const emptyUserCart = async (authtoken) =>
+  await axios.delete(`${process.env.REACT_APP_API}/user/cart`, {
+    headers: {
+      authtoken,
+    },
+  });
+
 export const saveUserAddress = async (authtoken, address, name, zip) => {
   return await axios.post(
     `${process.env.REACT_APP_API}/user/address`,
@@ -30,4 +37,24 @@ export const saveUserAddress = async (authtoken, address, name, zip) => {
       },
     }
   );
+};
+
+export const createOrder = async (stripeResponse, authtoken) => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/user/order`,
+    { stripeResponse },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
+
+export const getUserOrders = async (authtoken) => {
+  return await axios.get(`${process.env.REACT_APP_API}/user/orders`, {
+    headers: {
+      authtoken,
+    },
+  });
 };

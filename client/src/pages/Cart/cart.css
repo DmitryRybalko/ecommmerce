@@ -109,7 +109,7 @@
   .products__table,
   .table__body,
   .table__row,
-  .table__date {
+  .table__data {
     display: flex;
     flex-direction: column;
     min-width: 230px;

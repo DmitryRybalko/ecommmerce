@@ -26,7 +26,7 @@ const Checkout = ({ history }) => {
         if (res.data.ok) {
           setAddressSaved(true);
           toast.success("Address saved");
-          history.push("/payment");
+          history.push("/user/payment");
         }
       })
       .catch((error) => {
@@ -36,10 +36,6 @@ const Checkout = ({ history }) => {
     setAddress("");
     setZip("");
   };
-
-  // const saveAddressToDb = () => {
-  //   console.log(name, zip, address);
-  // };
 
   return (
     <div className="checkout__wrapper">
