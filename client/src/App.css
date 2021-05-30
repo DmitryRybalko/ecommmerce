@@ -12,6 +12,14 @@
   transform: translate(-50%, -50%);
   width: 400px;
 }
+.checkout__wrapper {
+  height: 100vh;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .form {
   display: flex;

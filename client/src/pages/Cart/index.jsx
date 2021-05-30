@@ -3,9 +3,10 @@ import Hero from "../../components/Hero";
 import ProductCardCheckout from "../../components/Card/ProductCardCheckout";
 import heroImg from "../../assets/about/about-hero.jpg";
 import { Link } from "react-router-dom";
+import { userCart } from "../../util/user";
 import "./cart.css";
 
-const Cart = () => {
+const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   const getTotal = () => {
@@ -13,7 +14,15 @@ const Cart = () => {
       return curVal + nextVal.count * nextVal.price;
     }, 0);
   };
-  const saveOrderToDb = () => {};
+  const saveOrderToDb = () => {
+    userCart(cart, user.token)
+      .then((res) => {
+        if (res.data.ok) history.push("/checkout");
+      })
+      .catch((error) => {
+        console.log("cart save error", error);
+      });
+  };
 
   return (
     <div className="cart-wrapper">

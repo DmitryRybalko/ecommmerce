@@ -1,5 +1,3 @@
-import React from "react";
-
 const CategoryForm = ({ name, handleSubmit, setName, loading }) => {
   return (
     <form className="form create-category-form" onSubmit={handleSubmit}>
