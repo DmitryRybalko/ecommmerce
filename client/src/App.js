@@ -1,34 +1,40 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+import { useEffect, lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import SignUp from "./pages/Auth/SignUp";
-import Shop from "./pages/Shop";
-import ContactUs from "./pages/Contact";
-import AboutUs from "./pages/About";
-import History from "./pages/User/History";
-import Password from "./pages/User/Password";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import CategoryCreate from "./pages/Admin/category/CategoryCreate";
-import CategoryUpdate from "./pages/Admin/category/CategoryUpdate";
-import ProductCreate from "./pages/Admin/product/ProductCreate";
-import ProductEdit from "./pages/Admin/product/ProductEdit";
-import UserRoute from "./components/Routes/UserRoute";
-import AdminRoute from "./components/Routes/AdminRoute";
-import ResetPassword from "./pages/Auth/ResetPassword";
-import Payment from "./pages/Payment";
-import SignIn from "./pages/Auth/SignIn";
-import Product from "./pages/Product";
-import AdminDashboard from "./pages/Admin/AdminDashboard";
-import CompleteSignUp from "./pages/Auth/SignUp/CompleteSignUp";
-import { auth } from "./util/firebaseConfig";
-import { currentUser } from "./util/auth";
-import AllProducts from "./pages/Admin/product/AllProducts";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "./util/firebaseConfig";
+import { currentUser } from "./util/auth";
+import { useDispatch } from "react-redux";
+import LoadingSpinner from "./components/LoadingSpinner";
+
+const SignIn = lazy(() => import("./pages/Auth/SignIn"));
+const SignUp = lazy(() => import("./pages/Auth/SignUp"));
+const Home = lazy(() => import("./pages/Home"));
+const Navbar = lazy(() => import("./components/Navbar"));
+const Shop = lazy(() => import("./pages/Shop"));
+const ContactUs = lazy(() => import("./pages/Contact"));
+const AboutUs = lazy(() => import("./pages/About"));
+const History = lazy(() => import("./pages/User/History"));
+const Password = lazy(() => import("./pages/User/Password"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const CategoryCreate = lazy(() =>
+  import("./pages/Admin/category/CategoryCreate")
+);
+const CategoryUpdate = lazy(() =>
+  import("./pages/Admin/category/CategoryUpdate")
+);
+const ProductCreate = lazy(() => import("./pages/Admin/product/ProductCreate"));
+const ProductEdit = lazy(() => import("./pages/Admin/product/ProductEdit"));
+const UserRoute = lazy(() => import("./components/Routes/UserRoute"));
+const AdminRoute = lazy(() => import("./components/Routes/AdminRoute"));
+const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword"));
+const Payment = lazy(() => import("./pages/Payment"));
+const Product = lazy(() => import("./pages/Product"));
+const AdminDashboard = lazy(() => import("./pages/Admin/AdminDashboard"));
+const CompleteSignUp = lazy(() => import("./pages/Auth/SignUp/CompleteSignUp"));
+const AllProducts = lazy(() => import("./pages/Admin/product/AllProducts"));
 
 function App() {
   const dispatch = useDispatch();
@@ -59,36 +65,46 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <Navbar />
-      <ToastContainer />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup/complete" component={CompleteSignUp} />
-        <Route exact path="/resetPassword" component={ResetPassword} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/contact" component={ContactUs} />
-        <Route exact path="/product/:slug" component={Product} />
-        <UserRoute exact path="/user/history" component={History} />
-        <UserRoute exact path="/user/payment" component={Payment} />
-        <UserRoute exact path="/checkout" component={Checkout} />
-        <UserRoute exact path="/user/password" component={Password} />
-        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
-        <AdminRoute exact path="/admin/product" component={ProductCreate} />
-        <AdminRoute exact path="/admin/product/:slug" component={ProductEdit} />
-        <AdminRoute exact path="/admin/category" component={CategoryCreate} />
-        <AdminRoute exact path="/admin/products" component={AllProducts} />
-        <AdminRoute
-          exact
-          path="/admin/category/:slug"
-          component={CategoryUpdate}
-        />
-        <Route exact path="/about" component={AboutUs} />
-      </Switch>
-    </div>
+    <Suspense fallback={<LoadingSpinner />}>
+      <div className="App">
+        <Navbar />
+        <ToastContainer />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup/complete" component={CompleteSignUp} />
+          <Route exact path="/resetPassword" component={ResetPassword} />
+          <Route exact path="/shop" component={Shop} />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/contact" component={ContactUs} />
+          <Route exact path="/product/:slug" component={Product} />
+          <UserRoute exact path="/user/history" component={History} />
+          <UserRoute exact path="/user/payment" component={Payment} />
+          <UserRoute exact path="/checkout" component={Checkout} />
+          <UserRoute exact path="/user/password" component={Password} />
+          <AdminRoute
+            exact
+            path="/admin/dashboard"
+            component={AdminDashboard}
+          />
+          <AdminRoute exact path="/admin/product" component={ProductCreate} />
+          <AdminRoute
+            exact
+            path="/admin/product/:slug"
+            component={ProductEdit}
+          />
+          <AdminRoute exact path="/admin/category" component={CategoryCreate} />
+          <AdminRoute exact path="/admin/products" component={AllProducts} />
+          <AdminRoute
+            exact
+            path="/admin/category/:slug"
+            component={CategoryUpdate}
+          />
+          <Route exact path="/about" component={AboutUs} />
+        </Switch>
+      </div>
+    </Suspense>
   );
 }
 

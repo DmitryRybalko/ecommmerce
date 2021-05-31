@@ -1,0 +1,28 @@
+.showcase {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 350px;
+}
+
+.svg3 {
+  position: absolute;
+  top: 12.26rem;
+}
+
+.svg2 {
+  padding-left: 1px;
+}
+
+.svg1 {
+  padding-right: 1px;
+}
