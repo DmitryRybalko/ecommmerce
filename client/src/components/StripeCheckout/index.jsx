@@ -14,7 +14,6 @@ const StripeCheckout = ({ history }) => {
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
-  //const [cartTotal, setCartTotal] = useState(0);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -23,12 +22,11 @@ const StripeCheckout = ({ history }) => {
     createPaymentIntent(user.token)
       .then((res) => {
         setClientSecret(res.data.clientSecret);
-        //setCartTotal(res.data.cartTotal);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [user.token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,12 +90,15 @@ const StripeCheckout = ({ history }) => {
 
   return (
     <>
-      <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment Successful.
-        <Link className="checkout-link" to="/user/history">
-          See the details
-        </Link>
-      </p>
+      <div className="result-message-container">
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment Successful.
+          <Link className="checkout-link" to="/user/history">
+            See the details
+          </Link>
+        </p>
+      </div>
+
       <form id="payment-form" className="stripe-form" onSubmit={handleSubmit}>
         <CardElement
           id="card-element"

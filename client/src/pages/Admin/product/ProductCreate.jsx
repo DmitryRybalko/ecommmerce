@@ -31,8 +31,7 @@ const ProductCreate = () => {
   const loadCategories = () =>
     getCategories().then((c) => setValues({ ...values, categories: c.data }));
 
-  const { title, description, price, category, categories, quantity, images } =
-    values;
+  const { title, description, price, categories, quantity } = values;
 
   const handleSubmit = (e) => {
     e.preventDefault();

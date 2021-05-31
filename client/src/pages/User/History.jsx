@@ -1,8 +1,7 @@
 import UserNav from "../../components/UserNav";
 import { useState, useEffect } from "react";
 import { getUserOrders } from "../../util/user";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 import "./user.css";
 const History = () => {
   const [orders, setOrders] = useState([]);

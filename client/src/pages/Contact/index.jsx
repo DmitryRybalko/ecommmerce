@@ -33,7 +33,6 @@ const ContactUs = () => {
     setEmail("");
     setMessage("");
   };
-
   return (
     <div className="contact-wrapper">
       <Hero

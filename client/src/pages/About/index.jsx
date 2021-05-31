@@ -13,6 +13,7 @@ import annette from "../../assets/about/annette.jpg";
 import heroImg from "../../assets/about/about-hero.jpg";
 
 const AboutUs = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   return (
     <div className="about-wrapper">
       <Hero

@@ -13,7 +13,6 @@ import "./home.css";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadAllProducts();
@@ -21,10 +20,8 @@ const Home = () => {
   }, []);
 
   const loadAllProducts = () => {
-    setLoading(true);
     getProducts("createdAt", "desc", 3)
       .then((res) => {
-        setLoading(false);
         setProducts(res.data);
       })
       .catch((error) => {
@@ -33,10 +30,8 @@ const Home = () => {
   };
 
   const loadPopularProducts = () => {
-    setLoading(true);
     getProducts("sold", "desc", 3)
       .then((res) => {
-        setLoading(false);
         setPopularProducts(res.data);
       })
       .catch((error) => {

@@ -3,7 +3,8 @@ import { getProduct, getRelatedProduct } from "../../util/product";
 import defaultProduct from "../../assets/default.jpg";
 import ProductCard from "../../components/Card/ProductCard";
 import Footer from "../../components/Footer";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import _ from "lodash";
 import "./product.css";
 
@@ -24,11 +25,10 @@ const Product = ({ match }) => {
   };
   useEffect(() => {
     loadSingleProduct();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [slug]);
 
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-  //const [cartNotEmpty, setCartNotEmpty] = useState(0);
 
   const handleAddToCart = () => {
     let cart = [];
@@ -40,6 +40,7 @@ const Product = ({ match }) => {
         ...product,
         count: 1,
       });
+      toast.success("Added to cart");
       let unique = _.uniqWith(cart, _.isEqual);
       localStorage.setItem("cart", JSON.stringify(unique));
       dispatch({
@@ -47,8 +48,6 @@ const Product = ({ match }) => {
         payload: unique,
       });
     }
-
-    //setCartNotEmpty(cartNotEmpty + 1);
   };
 
   return (
@@ -77,7 +76,7 @@ const Product = ({ match }) => {
           </div>
         </div>
         <div className="product__related">
-          <h2 className="product__related__header">Related Products</h2>
+          <h2 className="product__related__header">You might also like</h2>
           <div className="product__related-wrapper">
             {related.length ? (
               related.map((product) => (

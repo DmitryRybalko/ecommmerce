@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
-//import { useState } from "react";
 import { MdShoppingCart, MdRemoveRedEye } from "react-icons/md";
 import defaultProduct from "../../assets/default.jpg";
 import "./product.css";
 import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   const { images, title, description, slug, price } = product;
-  //const [cartNotEmpty, setCartNotEmpty] = useState(0);
 
   const handleAddToCart = () => {
     let cart = [];
@@ -31,8 +28,6 @@ const ProductCard = ({ product }) => {
         payload: unique,
       });
     }
-
-    //setCartNotEmpty(cartNotEmpty + 1);
   };
 
   return (

@@ -16,7 +16,7 @@ const CategoryUpdate = ({ history, match }) => {
 
   useEffect(() => {
     loadCategory();
-  }, []);
+  }, [loadCategory]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

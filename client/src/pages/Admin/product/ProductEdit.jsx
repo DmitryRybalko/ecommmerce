@@ -24,7 +24,7 @@ const ProductEdit = ({ match, history }) => {
   const [loading, setLoading] = useState(false);
   const { slug } = match.params;
 
-  const { title, description, price, category, quantity, images } = values;
+  const { title, description, price, category, quantity } = values;
 
   useEffect(() => {
     loadProduct();

@@ -2,14 +2,13 @@ import Hero from "../../components/Hero";
 import Footer from "../../components/Footer";
 import ProductCard from "../../components/Card/ProductCard";
 import { useEffect, useState } from "react";
-import { getProductsCount, getProductsPagination } from "../../util/product";
+import { getProductsPagination } from "../../util/product";
 import HeroImage from "../../assets/contact/hero-image.jpg";
 import "./shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [productsCount, setProductsCount] = useState(0);
 
   const loadAllProducts = () => {
     getProductsPagination("createdAt", "desc", page)

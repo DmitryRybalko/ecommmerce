@@ -18,6 +18,23 @@
   width: 400px;
 }
 
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category__icon {
+  cursor: pointer;
+}
+
+.category-container {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .product-card__image {
   object-fit: cover;
   height: 300px;

@@ -1,16 +1,12 @@
 import AdminNav from "../../components/AdminNav";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { getOrders, changeStatus } from "../../util/admin";
 import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
   const { user } = useSelector((state) => ({ ...state }));
-
-  useEffect(() => {
-    loadOrders();
-  }, []);
 
   const loadOrders = () => {
     getOrders(user.token)
@@ -32,6 +28,10 @@ const AdminDashboard = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
 
   return (
     <div className="history-wrapper">

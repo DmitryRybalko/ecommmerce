@@ -1,30 +1,19 @@
-import { saveUserAddress, getUserCart } from "../../util/user";
-import { useState, useEffect } from "react";
+import { saveUserAddress } from "../../util/user";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Checkout = ({ history }) => {
   const [name, setName] = useState("");
-  const [products, setProducts] = useState([]);
   const [address, setAddress] = useState("");
   const [zip, setZip] = useState("");
-  const [addressSaved, setAddressSaved] = useState(false);
   const { user } = useSelector((state) => ({ ...state }));
-
-  useEffect(() => {
-    getUserCart(user.token)
-      .then((res) => {
-        setProducts(res.data.products);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     saveUserAddress(user.token, address, name, zip)
       .then((res) => {
         if (res.data.ok) {
-          setAddressSaved(true);
           toast.success("Address saved");
           history.push("/user/payment");
         }

@@ -11,7 +11,6 @@ const SignIn = ({ history }) => {
 
   const roleBasedRedirect = (res) => {
     let intended = history.location.state;
-    console.log(intended);
     if (intended) {
       history.push(intended.from);
     } else {
@@ -25,7 +24,7 @@ const SignIn = ({ history }) => {
 
   useEffect(() => {
     if (user && user.token) history.push("/");
-  }, [user]);
+  }, [user, history]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

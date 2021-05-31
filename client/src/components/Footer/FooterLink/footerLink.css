@@ -3,6 +3,7 @@
   font-size: 0.9rem;
   font-family: sans-serif, Arial, Helvetica;
   padding-bottom: 10px;
+  width: fit-content;
 }
 
 .footer-col__link:hover {

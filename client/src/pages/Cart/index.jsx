@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Hero from "../../components/Hero";
 import ProductCardCheckout from "../../components/Card/ProductCardCheckout";
 import heroImg from "../../assets/about/about-hero.jpg";
@@ -8,7 +8,6 @@ import "./cart.css";
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
-  const dispatch = useDispatch();
   const getTotal = () => {
     return cart.reduce((curVal, nextVal) => {
       return curVal + nextVal.count * nextVal.price;

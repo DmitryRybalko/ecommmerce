@@ -78,16 +78,18 @@ const CategoryCreate = () => {
           {categories.map((c) => (
             <div className="category" key={c._id}>
               {c.name}
-              <span
-                className="category__wrapper"
-                onClick={() => handleRemove(c.slug)}
-              >
-                {<MdDelete className="category__icon" />}
-              </span>
+              <div className="category-container">
+                <span
+                  className="category__wrapper"
+                  onClick={() => handleRemove(c.slug)}
+                >
+                  {<MdDelete className="category__icon" />}
+                </span>
 
-              <Link to={`/admin/category/${c.slug}`}>
-                <span className="category__wrapper">{<MdEdit />}</span>
-              </Link>
+                <Link to={`/admin/category/${c.slug}`}>
+                  <span className="category__wrapper">{<MdEdit />}</span>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
